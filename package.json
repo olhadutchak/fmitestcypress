@@ -1,0 +1,17 @@
+{
+  "name": "fmitestcypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:junit": "cypress run  --browser chrome",
+    "cy:open": "cypress open --e2e",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cy-verify-downloads": "^0.2.3",
+    "cypress": "^13.5.0"
+  }
+}
