@@ -1,9 +1,9 @@
 class HomePage {
 
-      get linkFacebook()                     { return cy.get('.header-social-links ul li a[href="https://www.facebook.com/fmi.org.ua/"]');}
-      get linkTelegram()                     { return cy.get('.header-social-links ul li a[href="https://t.me/FMISiteNews"]'); }
-      get linkInstagram()                    { return cy.get('.header-social-links ul li a[href="https://www.instagram.com/m._i_.f/"]'); }
-      get linkYoutube()                      { return cy.get('.header-social-links ul li a[href="https://youtube.com/@MathTube_"]'); }
+      get linkFacebook()                     { return cy.get('.header-social-links ul li a').eq(0); }
+      get linkTelegram()                     { return cy.get('.header-social-links ul li a').eq(1); }
+      get linkInstagram()                    { return cy.get('.header-social-links ul li a').eq(2); }
+      get linkYoutube()                      { return cy.get('.header-social-links ul li a').eq(3); }
       get mail()                             { return cy.get('a[href="mailto:clg-math@chnu.edu.ua"]'); }
 
       get searchwrp()                        { return cy.get('.search-wrapper'); }
