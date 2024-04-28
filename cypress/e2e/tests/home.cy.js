@@ -16,10 +16,9 @@ describe('TESTING HOME PAGE', () => {
         .should('have.attr', 'href', 'https://www.facebook.com/fmi.org.ua/')
         .and('have.attr', 'title', 'Факультет математики та інформатики ЧНУ ім. Ю. Федьковича')
         .invoke('removeAttr', 'target');
-
       homePage.clickFacebookLink();
 
-      cy.location('href', { timeout: 10000 }).then((url) => {
+      cy.location('href', { timeout: 10000 }).should('include', 'https://www.facebook.com/fmi.org.ua/').then((url) => {
         cy.request(url).its('status').should('eq', 200);
 
       });
@@ -43,7 +42,7 @@ describe('TESTING HOME PAGE', () => {
 
       homePage.clickInstagramLink();
 
-      cy.location('href', { timeout: 10000 }).then((url) => {
+      cy.location('href', { timeout: 10000 }).should('include', 'https://www.instagram.com/m._i_.f/').then((url) => {
         cy.request(url).its('status').should('eq', 200);
 
       });
@@ -51,22 +50,23 @@ describe('TESTING HOME PAGE', () => {
     });
 
 
-    it('Validate youtube link', () => {
+    it('Validate youtube link ', () => {
+
       homePage.linkYoutube
         .should('have.attr', 'href', 'https://youtube.com/@MathTube_')
         .and('have.attr', 'title', 'Youtube')
         .invoke('removeAttr', 'target');
-    
+
       homePage.clickYoutubeLink();
-    
-      cy.location('href', { timeout: 10000 }).then((url) => {
+
+      cy.location('href', { timeout: 10000 }).should('include', 'https://www.youtube.com/@MathTube_').then((url) => {
         cy.request(url).its('status').should('eq', 200);
 
       });
 
     });
 
-    
+
     it('Validate the mail', () => {
       homePage.mail
         .should('be.visible')
