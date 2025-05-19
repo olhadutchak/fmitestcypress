@@ -59,7 +59,7 @@ describe("TESTING THE STUDENTS PAGE", () => {
         .should('contain', 'Заочна форма');
       studentPage.clickCorrespondenceForm();
         
-      cy.url().should('include', '/studentu/rozklad-zaniat-ta-sesii/zaochna-forma/').then((url) => {
+      cy.url().should('include', 'https://fmi.chnu.edu.ua/studentu/navchannia/rozklad-zaniat-ta-sesii/zaochna-forma/').then((url) => {
 
         cy.request(url).its('status').should('eq', 200);
 
@@ -85,18 +85,23 @@ describe("TESTING THE STUDENTS PAGE", () => {
     });
 
 
-    it('Validate links to pdf files', () => {
-
+    it('Validate links to pdf files and external resources', () => {
       studentPage.pdfFiles.each(($link) => {
 
         const url = $link.attr('href');
         cy.wrap($link).should('exist').and('have.attr', 'target', '_blank');
-        cy.request(url).then((response) => {
-
-          cy.wrap(response.headers['content-type']).should('include', 'application/pdf');
-
-        });
-
+        if (url.endsWith('.pdf')) {
+          cy.request(url).then((response) => {
+            cy.wrap(response.headers['content-type']).should('include', 'application/pdf');
+          });
+        } else {
+          cy.request({
+            url: url,
+            followRedirect: true, 
+          }).then((response) => {
+            cy.wrap(response.status).should('eq', 200); 
+          });
+        }
       });
 
     });
@@ -204,7 +209,7 @@ describe("TESTING THE STUDENTS PAGE", () => {
         .should('be.visible')
         .should('contain', 'Гуртки');
       studentPage.clickWorkShop();
-      cy.url().should('include', '/studentu/naukova-robota/hurtky/');
+      cy.url().should('include', 'https://fmi.chnu.edu.ua/studentu/mozhlyvosti/naukova-robota/hurtky/');
 
       studentPage.main.within(() => {
         cy.contains("Кафедра математичного моделювання").should("exist");
@@ -239,7 +244,7 @@ describe("TESTING THE STUDENTS PAGE", () => {
         .should('contain', 'Конференції');
       studentPage.clickTestingConferences();
       
-      cy.url().should('include', '/studentu/naukova-robota/studentski-konferentsii/');
+      cy.url().should('include', 'https://fmi.chnu.edu.ua/studentu/mozhlyvosti/naukova-robota/studentski-konferentsii/');
 
     });
 
@@ -251,7 +256,7 @@ describe("TESTING THE STUDENTS PAGE", () => {
 
       studentPage.clickTestingOlympics(); 
 
-      cy.url().should('include', '/studentu/naukova-robota/studentski-olimpiady/').then((url) => {
+      cy.url().should('include', '/media/f0oasyzm/contest.png?width=35&height=40&format=webp&quality=80').then((url) => {
 
         cy.request(url).its('status').should('eq', 200);
 
@@ -265,7 +270,7 @@ describe("TESTING THE STUDENTS PAGE", () => {
       studentPage.testingCompetitions
         .should('contain', 'Конкурси');
       studentPage.clickTestingCompetitions();
-      cy.url().should('include', '/studentu/naukova-robota/konkursy/').then((url) => {
+      cy.url().should('include', '/studentu/mozhlyvosti/naukova-robota/konkursy/').then((url) => {
 
         cy.request(url).its('status').should('eq', 200);
 

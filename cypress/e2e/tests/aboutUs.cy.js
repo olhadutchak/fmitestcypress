@@ -1,6 +1,48 @@
 import aboutUsPage from "../pages/aboutUs.page";
 
 describe('TESTING ABOUT US PAGE', () => {
+    context('TESTING ADMINISTRATION ELEMENT', () => {
+        beforeEach(() => {
+
+            cy.visit('https://fmi.chnu.edu.ua/');
+
+        });
+        context('TESTING DEANERY', () => {
+            beforeEach(() => {
+
+                cy.visit('https://fmi.chnu.edu.ua/pro-nas/administratsiia/dekanat/');
+
+            });
+
+            it('Validate the dean office display', () => {
+                aboutUsPage.constants.members.forEach((member, index) => {
+                    // Перевірка видимості картки члена команди та зображення
+                    aboutUsPage.teamMember.eq(index).should('be.visible');
+                    aboutUsPage.teamMemberimg.eq(index).should('be.visible');
+            
+                    // Перевірка email
+                    aboutUsPage.teamMemberEmail.eq(index)
+                        .should('be.visible')
+                        .invoke('attr', 'href')
+                        .should('eq', `mailto:${member.email}`);
+            
+                    // Перевірка телефону
+                    aboutUsPage.teamMemberPhone.eq(index)
+                        .should('be.visible')
+                        .invoke('attr', 'href')
+                        .should('eq', `tel:${member.phone}`);
+            
+                    
+                });
+            });
+
+    
+            
+    });
+            
+            
+});
+
    context('TESTING ABOUT US', () => {
 
         beforeEach(() => {
@@ -826,7 +868,7 @@ describe('TESTING ABOUT US PAGE', () => {
             });
 
 
-            it('Validate downloaded file', () => {
+            it.only('Validate downloaded file', () => {
                 aboutUsPage.clickDodatok();
                 cy.readFile('cypress/downloads/dodatok-a.docx', { timeout: 20000 });
                 cy.verifyDownload('dodatok-a.docx')

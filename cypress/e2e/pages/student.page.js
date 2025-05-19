@@ -1,7 +1,7 @@
 class StudentPage {
    
     get navigationsElement()            { return cy.get('.text-element').eq(1); }
-    get navigationsElementHome()        { return cy.get('.text-element iconify-icon'); }
+    get navigationsElementHome()        { return cy.get('.text-element > .iconify-icon'); }
     get dayForm()                       { return cy.get('.category-item-flex:contains("Денна форма")'); }
     get correspondenceForm()            { return cy.get('.category-item-flex:contains("Заочна форма")'); }
     get graduateStudents()              { return cy.get('.category-item-flex:contains("Для аспірантів")'); }

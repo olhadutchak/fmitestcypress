@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cy-verify-downloads": "^0.2.3",
-    "cypress": "^13.5.0"
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.0",
+    "@cypress/webpack-preprocessor": "^6.0.2",
+    "cy-verify-downloads": "^0.2.6",
+    "cypress": "^13.5.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10"
   }
 }

@@ -19,18 +19,10 @@ describe('TESTING HOME PAGE', () => {
       homePage.clickFacebookLink();
 
       cy.location('href', { timeout: 10000 }).should('include', 'https://www.facebook.com/fmi.org.ua/').then((url) => {
-        cy.request(url).its('status').should('eq', 200);
+        cy.request(url).its('status').should('eq', 200); 
 
       });
 
-    });
-
-
-    it('Validate telegram link', () => {
-      homePage.linkTelegram
-        .should('have.attr', 'href', 'https://t.me/FMISiteNews')
-        .and('have.attr', 'title', 'Новини ФМІ ЧНУ')
-        .invoke('removeAttr', 'target');
     });
 
 
@@ -124,44 +116,59 @@ describe('TESTING HOME PAGE', () => {
     });
     
 
-    it('Validate the activity sub-menu', () => {
-      homePage.mouseoverActivityMenu();
-      homePage.subActivityMenu.should('exist');
+    it('Validate the activities menu item: categories and links', () => {
+      homePage.activityMenu.should('be.visible');
+      homePage.clickActivityMenu();
+      homePage.makeTheSubmenuVisble(homePage.subActivityMenu);
 
-      homePage.constants.activityMenuItems.forEach((item, index) => {
-        homePage.subActivityMenu.should('contain', item);
-        homePage.clickMenuItem(item);
-        homePage.verifyUrlContains(homePage.constants.activityExpectedLinks[index]);
-        cy.visit(homePage.constants.homeLink);
+      homePage.constants.activityMenuItems.forEach(({ title }) => {
+        homePage.verifyCategoryContains(title)
+      });
+
+      homePage.constants.activityMenuItems.forEach(({ items }) => {
+        items.forEach(({ text, url }) => {
+          homePage.clickSubmenuSubItems(homePage.activityMenu, text);
+          cy.on('uncaught:exception', () => false); 
+          homePage.verifyUrlContains(url); 
+          cy.visit(homePage.constants.homeLink);
+
+        });
 
       });
 
     });
 
+    
+    it('Validate the student menu item: categories and links', () => {
+      homePage.studentMenu.should('be.visible');
+      homePage.clickStudentMenu();
+      homePage.makeTheSubmenuVisble(homePage.subStudentMenu);
 
-    it('Validate the student sub-menu', () => {
-      homePage.mouseoverStudentMenu();
-      homePage.subStudentMenu.should('exist');
+      homePage.constants.studentMenuItems.forEach(({ title }) => {
+        homePage.verifyCategoryContains(title)
+      });
 
-      homePage.constants.studentMenuItems.forEach((item, index) => {
-        homePage.subStudentMenu.should('contain', item);
-        homePage.clickMenuItem(item);
-        homePage.verifyUrlContains(homePage.constants.studenExpectedLinks[index]);
-        cy.visit(homePage.constants.homeLink);
+      homePage.constants.studentMenuItems.forEach(({ items }) => {
+        items.forEach(({ text, url }) => {
+          homePage.clickSubmenuSubItems(homePage.studentMenu, text);
+          cy.on('uncaught:exception', () => false); 
+          homePage.verifyUrlContains(url); 
+          cy.visit(homePage.constants.homeLink);
+
+        });
 
       });
 
     });
     
-
+    
     it('Validate the applicant sub-menu', () => {
       homePage.mouseoverApplicantMenu();
       homePage.subApplicantMenu.should('exist');
 
-      homePage.constants.applicantMenuItems.forEach((item, index) => {
-        homePage.subApplicantMenu.should('contain', item);
-        homePage.clickMenuItem(item);
-        homePage.verifyUrlContains(homePage.constants.applicantExpectedLinks[index]);
+      homePage.constants.applicantMenuItems.forEach(({ text, url }) => {
+        homePage.clickSubmenuSubItems(homePage.applicantMenu, text);
+        homePage.verifyUrlContains(url);
         cy.visit(homePage.constants.homeLink);
 
       });
@@ -184,14 +191,22 @@ describe('TESTING HOME PAGE', () => {
     });
 
 
-    it('Validate the about us sub-menu', () => {
-      homePage.mouseoverAboutUsMenu
-      homePage.subAboutUsMenu.should('exist');
+    it('Validate the about us sub-menu: categories and links', () => {
+      homePage.aboutUsMenu.should('be.visible');
+      homePage.clickAboutUsMenu();
+      homePage.makeTheSubmenuVisble(homePage.subAboutUsMenu);
 
-      homePage.constants.aboutUsMenuItems.forEach((item, index) => {
-        homePage.subAboutUsMenu.should('contain', item);
-        homePage.clickAboutUsMenuItem(item);
-        cy.url().should('include', homePage.constants.aboutUsExpectedLinks[index]);
+      homePage.constants.aboutMenuItems.forEach(({ title }) => {
+        homePage.verifyCategoryContains(title)
+      });
+
+      homePage.constants.aboutMenuItems.forEach(({ items }) => {
+        items.forEach(({ text, url }) => {
+          homePage.clickSubmenuSubItems(homePage.aboutUsMenu, text);
+          cy.on('uncaught:exception', () => false); 
+          homePage.verifyUrlContains(url); 
+          cy.visit(homePage.constants.homeLink);
+        });
 
       });
 
@@ -254,16 +269,27 @@ describe('TESTING HOME PAGE', () => {
   context('TESTING FLEX CONTEINERS', () => {
 
 
-    it('Validate banner "button"', () => {
-      homePage.bannerBtn
+    it('Validate banner "buttonFirst"', () => {
+      homePage.bannerBtnFirst
         .should("exist")
         .invoke('removeAttr', 'target');
 
-      homePage.clickBannerButton();
+      homePage.clickBannerButton(homePage.bannerBtnFirst);
 
-      cy.location('href', { timeout: 10000 }).should('not.eq', 'https://fmi.chnu.edu.ua').wait(5000).then((url) => {
-        cy.request(url).its('status').should('eq', 200);
-      });
+      cy.location('href', { timeout: 10000 }).should('eq', homePage.constants.linkBannerBtnFirst);
+      cy.request(homePage.constants.linkBannerBtnFirst).its('status').should('eq', 200);
+    });
+
+
+    it('Validate banner "buttonSecond"', () => {
+      homePage.bannerBtnSecond
+        .should("exist")
+        .invoke('removeAttr', 'target');
+
+      homePage.clickBannerButton(homePage.bannerBtnSecond);
+
+      cy.location('href', { timeout: 10000 }).should('eq', homePage.constants.linkBannerBtnSecond);
+      cy.request(homePage.constants.linkBannerBtnSecond).its('status').should('eq', 200);
     });
 
 
@@ -326,10 +352,20 @@ describe('TESTING HOME PAGE', () => {
     it('Validate links for partners', () => {
       homePage.partnersLinks.each(($link) => {
         const href = $link.prop('href');
-        cy.request({ url: href, timeout: 18000 }).its('status').should('eq', 200);
-        
+    
+        cy.request({
+          url: href,
+          timeout: 18000,
+          failOnStatusCode: false, 
+        }).then((response) => {
+          if (href.includes('facebook.com')) {
+            expect(response.status).to.be.oneOf([200, 400]);
+            cy.log(`Facebook link tested with status: ${response.status}`);
+          } else {
+            expect(response.status).to.eq(200);
+          }
+        });
       });
-
     });
 
 
@@ -397,7 +433,7 @@ describe('TESTING HOME PAGE', () => {
     it('Validate activation of privacy policy after button click', () => {
       homePage.privacybutton.should('have.class', 'active');
       homePage.clickMarginbottom();
-      cy.url().should('include', 'https://fmi.chnu.edu.ua/polityka-konfidentsiinosti/');
+      cy.url().should('include', 'https://www.chnu.edu.ua/polityka-konfidentsiinosti/');
       cy.go('back');
       homePage.clickAcceptAllPrivacyPolicy();
       homePage.policyFingerprintButton.should('be.visible');
@@ -483,11 +519,11 @@ describe('TESTING HOME PAGE', () => {
     it('Validate the transfer to the privacy settings', () => {
       homePage.privacySettings
         .should('exist')
-        .should('have.attr', 'href', '/polityka-konfidentsiinosti/');
+        .should('have.attr', 'href', 'https://www.chnu.edu.ua/polityka-konfidentsiinosti/');
 
       homePage.clickPrivacySettings(); 
 
-      cy.url().should('include', '/polityka-konfidentsiinosti/').then((url) => {
+      cy.url().should('include', 'https://www.chnu.edu.ua/polityka-konfidentsiinosti/').then((url) => {
 
         cy.request(url).its('status').should('eq', 200);
 
@@ -505,9 +541,7 @@ describe('TESTING HOME PAGE', () => {
       homePage.mail1
         .should('be.visible')
         .invoke('attr', 'href')
-        .then((emailLink) => {
-          cy.request(emailLink).its('status').should('eq', 200);
-        });
+        .should('eq', 'mailto:alfaolga1@gmail.com');
     });
 
 

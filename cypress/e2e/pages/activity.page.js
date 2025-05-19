@@ -47,6 +47,14 @@ class ActivityPage {
     get partnersLinks()             { return cy.get('[id^="splide01-slide"]').find('a'); }
     get moreNewsButton()            { return cy.get('.category-item-flex'); }
 
+    constants = {
+        expectedLinks: [
+            { text: 'Практика найменування освітніх програм', url: 'https://youtu.be/NhID04Oohqc' },
+            { text: 'Особливості переоформлення сертифікатів про акредитації ОП', url: 'https://youtu.be/SKTg5T1oHHk?si=VeHdP2v1o1rrrpT-' },
+            { text: 'Зміни до переліку галузей і спеціальностей', url: 'https://www.facebook.com/share/v/15HKz2hWfq/' }
+        ],
+    }
+
     clickCounOfYouScientists() {
         this.counOfYouScientists.click();
     }
@@ -120,7 +128,9 @@ class ActivityPage {
     }
     
     clickEducational() {
-        this.educational.click();
+        this.educational
+        .invoke('removeAttr', 'target') 
+        .click();
     }
     
     clickBoard() {

@@ -1,35 +1,35 @@
 class HomePage {
-
+      
       get linkFacebook()                     { return cy.get('.header-social-links ul li a').eq(0); }
-      get linkTelegram()                     { return cy.get('.header-social-links ul li a').eq(1); }
-      get linkInstagram()                    { return cy.get('.header-social-links ul li a').eq(2); }
-      get linkYoutube()                      { return cy.get('.header-social-links ul li a').eq(3); }
+      get linkInstagram()                    { return cy.get('.header-social-links ul li a').eq(1); }
+      get linkYoutube()                      { return cy.get('.header-social-links ul li a').eq(2); }
       get mail()                             { return cy.get('a[href="mailto:clg-math@chnu.edu.ua"]'); }
 
       get searchwrp()                        { return cy.get('.search-wrapper'); }
       get logolink()                         { return cy.get('.navbar-left a[href="/"]'); }
       get newsMenu()                         { return cy.get('.menu-item.menu-dropdown:contains("Новини")'); }
-      get activityMenu()                     { return cy.get('.menu-item.menu-dropdown:contains("Діяльність")'); }
-      get studentMenu()                      { return cy.get('.menu-item.menu-dropdown:contains("Студенту")').eq(1); }
-      get applicantMenu()                    { return cy.get('.menu-item.menu-dropdown:contains("Абітурієнту")'); }
+      get activityMenu()                     { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Діяльність"))'); }
+      get studentMenu()                      { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Студенту"))'); }
+      get applicantMenu()                    { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Абітурієнту"))'); }
       get departmentMenu()                   { return cy.get('.menu-item.menu-dropdown:contains("Кафедри")'); }
-      get aboutUsMenu()                      { return cy.get('.menu-item.menu-dropdown:contains("Про нас")'); }
+      get aboutUsMenu()                      { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Про нас"))'); }
 
       get subNewsMenu()                      { return cy.get('.submenu').eq(0); }
-      get subActivityMenu()                  { return cy.get('.submenu').eq(1); }
-      get subStudentMenu()                   { return cy.get('.submenu').eq(2); }
-      get subApplicantMenu()                 { return cy.get('.submenu').eq(3); }
+      get subActivityMenu()                  { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Діяльність"))').find('div.submenu.megamenu'); }
+      get subStudentMenu()                   { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Студенту"))').find('div.submenu.megamenu'); }
+      get subApplicantMenu()                 { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Абітурієнту"))').find('div.submenu.megamenu'); }
       get subDepartmentMenu()                { return cy.get('.submenu').eq(4); }
-      get subAboutUsMenu()                   { return cy.get('.submenu').eq(5); }
+      get subAboutUsMenu()                   { return cy.get('li.menu-item.menu-dropdown:has(span:contains("Про нас"))').find('div.submenu.megamenu'); }
 
 
+      get category()                         { return cy.get('.submenu-title'); }
       get linksInEvents()                    { return cy.get('.flex-home-latest-news-or-events-right ul li a'); }
       get flex2Columnsfirs()                 { return cy.get('.flex-item .promotion-item-text a').eq(0); }
       get flex2ColumnsSec()                  { return cy.get('.flex-item .promotion-item-text a').eq(1); }
 
       get linksCHNU()                        { return cy.get('.footer-normal .links li:contains("Чернівецький національний університет імені Юрія Федьковича") a'); }
       get linksMoodle()                      { return cy.get('.footer-normal .links li:contains("Електронне навчання - Moodle") a'); }
-      get linksAdmission()                   { return cy.get('.footer-normal .links li:contains("Вступ 2023") a'); }
+      get linksAdmission()                   { return cy.get('.footer-normal .links li:contains("Вступ 2024") a'); }
       get contactsPhoneNumber()              { return cy.get('.footer-normal li:contains("(0372) 58-48-80") a'); }
       get privacySettings()                  { return cy.get('.footer-normal li:contains("Налаштування конфіденційності") a'); }
       get marginbottom()                     { return cy.get('.margin-bottom a'); }
@@ -40,7 +40,8 @@ class HomePage {
       get mail3()                            { return cy.get('a[href="mailto:mykola.gorbatenko@gmail.com"]'); }
 
       get searchbtn()                        { return cy.get('.search-button'); }
-      get bannerBtn()                        { return cy.get('.banner-button'); }
+      get bannerBtnFirst()                        { return cy.get('.banner-button').eq(0); }
+      get bannerBtnSecond()                        { return cy.get('.banner-button').eq(1); }
       get prevButton()                       { return cy.get('#splide02 .splide__arrows  .splide__arrow--prev'); }
       get nextButton()                       { return cy.get('#splide02  .splide__arrows  .splide__arrow--next'); }
       get scrollBtn()                        { return cy.get('#scrollUp'); }
@@ -66,72 +67,31 @@ class HomePage {
 
       searchTerm: "Новини",
 
-      newsMenuItems: ['Всі', 'Загальні', 'Оголошення', 'Події', 'Студенту', 'Викладачу', 'Вітання'],
 
-      activityMenuItems: ['Наукова', 'Навчально-методична', 'Міжнародна', 'Організаційно-виховна діяльність', 'Нормативні документи', 'Співпраця', 
-      'Підвищення кваліфікації для вчителів', 'БМАН'],
+      newsMenuItems: [
+        'Всі', 
+        'Загальні', 
+        'Оголошення', 
+        'Події', 
+        'Студенту', 
+        'Викладачу', 
+        'Вітання'
+      ],
 
-      studentMenuItems: ['Розклад занять та сесій', 'Освітні програми та робочі плани', 'Наукова робота', 'Академічна доброчесність', 'Мобільність', 'Студентське життя',
-      'Вибір дисциплін','Рейтинг студентів', 'Плата за навчання'],
+      newsExpectedLinks:[
+        
+        '/novyny/',
+        '/novyny/zahalni/',
+        '/novyny/oholoshennia/',
+        '/novyny/podii/', 
+        '/novyny/studentam/',
+        '/novyny/vykladacham/',
+        '/novyny/vitannia/'
+      ],
 
-      applicantMenuItems: ['Бакалаврат', 'Магістратура', 'Аспірантура', 'Умови вступу', 'День відкритих дверей', 'Олімпіади', 'Курси підготовки до ЗНО', 'Аналіз вступної кампанії'],
-
+      
       departmentMenuItems: ['Кафедра алгебри та інформатики', 'Кафедра диференціальних рівнянь', 'Кафедра математичного аналізу', 'Кафедра математичного моделювання', 
       'Кафедра прикладної математики та інформаційних технологій'],
-
-      aboutUsMenuItems: ['Про факультет','Профбюро', 'Рада стейкхолдерів', 'Інфраструктура',  "Сторінка пам'яті загиблих Героїв",  'Галерея', 'Контакти', 'Корисні посилання' ],
-
-      newsExpectedLinks:['/novyny/','/novyny/zahalni/','/novyny/oholoshennia/', '/novyny/podii/', '/novyny/studentam/','/novyny/vykladacham/','/novyny/vitannia/'],
-
-      activityExpectedLinks:[
-
-      'https://fmi.chnu.edu.ua/diialnist/naukova/',
-      'https://fmi.chnu.edu.ua/diialnist/navchalno-metodychna/',
-      'https://fmi.chnu.edu.ua/diialnist/mizhnarodna/',
-      'https://fmi.chnu.edu.ua/diialnist/orhanizatsiino-vykhovna/',
-      'https://fmi.chnu.edu.ua/diialnist/normatyvni-dokumenty/',
-      'https://fmi.chnu.edu.ua/diialnist/spivpratsia/',
-      'https://algebra.chnu.edu.ua/diialnist/kursy-pidvyshchennia-kvalifikatsii-dlia-vchyteliv/',
-      'https://fmi.chnu.edu.ua/diialnist/bman/'],
-
-      studenExpectedLinks:[
-
-      'https://fmi.chnu.edu.ua/studentu/rozklad-zaniat-ta-sesii/',
-      'https://fmi.chnu.edu.ua/studentu/osvitni-prohramy-ta-robochi-plany/',
-      'https://fmi.chnu.edu.ua/studentu/naukova-robota/',
-      'https://fmi.chnu.edu.ua/studentu/akademichna-dobrochesnist/',
-      'https://www.chnu.edu.ua/novyny/mizhnarodna-diialnist/',
-      'https://fmi.chnu.edu.ua/studentu/studentske-zhyttia/',
-      'https://fmi.chnu.edu.ua/studentu/vybir-dystsyplin/',
-      'https://fmi.chnu.edu.ua/studentu/reitynh-studentiv/',
-      'https://fmi.chnu.edu.ua/studentu/plata-za-navchannia/',
-
-      ],
-
-      applicantExpectedLinks:[
-
-      'https://fmi.chnu.edu.ua/abituriientu/bakalavrat/',
-      'https://fmi.chnu.edu.ua/abituriientu/mahistratura/',
-      'https://fmi.chnu.edu.ua/abituriientu/aspirantura/',
-      'https://fmi.chnu.edu.ua/abituriientu/umovy-vstupu/',
-      'https://fmi.chnu.edu.ua/abituriientu/den-vidkrytykh-dverei/',
-      'https://fmi.chnu.edu.ua/abituriientu/olimpiady/',
-      'https://algebra.chnu.edu.ua/abituriientu/kursy-pidhotovky-do-zno-ta-nmt-z-matematyky/',
-      'https://fmi.chnu.edu.ua/abituriientu/analiz-vstupnoi-kampanii/vstup-2023/'
-
-      ],
-
-      aboutUsExpectedLinks: [
-        'https://fmi.chnu.edu.ua/pro-nas/pro-fakultet/',
-        'https://fmi.chnu.edu.ua/pro-nas/profbiuro/',
-        'https://fmi.chnu.edu.ua/pro-nas/rada-steikkholderiv/',
-        'https://fmi.chnu.edu.ua/pro-nas/infrastruktura/',
-        'https://fmi.chnu.edu.ua/pro-nas/storinka-pamiati-zahyblykh-heroiv/',
-        'https://fmi.chnu.edu.ua/pro-nas/halereia/',
-        'https://fmi.chnu.edu.ua/pro-nas/kontakty/',
-        'https://fmi.chnu.edu.ua/pro-nas/korysni-posylannia/'
-
-      ],
 
       departmentExpectedLinks: [
 
@@ -142,8 +102,164 @@ class HomePage {
         'https://amit.chnu.edu.ua/'
 
       ],
-      
+
+
+      activityMenuItems:[
+        {
+          title: 'Наукова',
+          items: [
+            { text: 'Конференції',                       url: '/diialnist/naukova/konferentsii/' },
+            { text: 'Семінари',                          url: 'https://cmt.chnu.edu.ua/seminar-chernivetskoho-matematychnoho-tovarystva/' },
+            { text: 'Аспірантура',                       url: '/diialnist/naukova/aspirantura/' },
+            { text: 'БМЖ',                               url: 'https://bmj.fmi.org.ua/index.php/adm' },
+            { text: 'Наукові школи',                     url: '/diialnist/naukova/naukovi-shkoly/' },
+          ],
+        },
+        {
+          title: 'Міжнародна',
+          items: [
+            { text: 'Стажування',                         url: '/diialnist/mizhnarodna/stazhuvannia/' },
+            { text: 'Школи та симпозіуми',                url: '/diialnist/mizhnarodna/shkoly-ta-sympoziumy/' },
+            { text: 'Проєкти',                            url: '/diialnist/mizhnarodna/proiekty/' },
+            { text: 'Мобільність',                        url: '/diialnist/mizhnarodna/mobilnist/' },
+          ],
+        },
+        {
+          title: 'Співпраця',
+          items: [
+            { text: 'Математична майстерня',               url: 'https://olimp.free-lib.com/' },
+            { text: 'БМАН',                                url: '/diialnist/spivpratsia/bman/' },
+            { text: 'Партнери',                            url: '/diialnist/spivpratsia/partnery/' },
+          ],
+        },
+        {
+          title: 'Освітньо-виховний напрямок',
+          items: [
+            { text: 'Навчально-методична',                 url: '/diialnist/navchalno-metodychna/' },
+            { text: 'Організаційно-виховна',               url: '/diialnist/orhanizatsiino-vykhovna/' },
+          ],
+        },
+        {
+          title: 'Безперервна освіта',
+          items: [
+            { text: 'Підвищення кваліфікації для вчителів', url: 'https://algebra.chnu.edu.ua/diialnist/kursy-pidvyshchennia-kvalifikatsii-dlia-vchyteliv/' },
+          ],
+        },
+      ],
+
+
+      studentMenuItems: [
+        {
+          title: 'Навчання',
+          items: [
+            { text: 'Розклад занять та сесій',          url: '/studentu/navchannia/rozklad-zaniat-ta-sesii/' },
+            { text: 'Освітні програми та робочі плани', url: '/studentu/navchannia/osvitni-prohramy-ta-robochi-plany/' },
+            { text: 'Індивідуальний графік',            url: '/studentu/navchannia/indyvidualnyi-hrafik/' },
+            { text: 'Вибір дисциплін',                  url: '/studentu/navchannia/vybir-dystsyplin/' },
+          ],
+        },
+        {
+          title: 'Студентський актив',
+          items: [
+            { text: 'Студентське життя',     url: '/studentu/studentskyi-aktyv/studentske-zhyttia/' },
+          ],
+        },
+        {
+          title: 'Корисне',
+          items: [
+            { text: 'Плата за навчання',      url: '/studentu/korysne/plata-za-navchannia/' },
+            { text: 'Зразки заяв',            url: '/studentu/korysne/zrazky-zaiav/' },
+            { text: 'Старости та куратори',   url: '/studentu/korysne/starosty-ta-kuratory/' },
+            { text: 'Гуртожиток',             url: '/pro-nas/infrastruktura/hurtozhytok/' },
+          ],
+        },
+        {
+          title: 'Можливості',
+          items: [
+            { text: 'Наукова робота',          url: '/studentu/mozhlyvosti/naukova-robota/' },
+            { text: 'Мобільність',             url: '/studentu/mozhlyvosti/mobilnist/' },
+          ],
+        },
+        {
+          title: 'Важливе',
+          items: [
+            { text: 'Рейтинг студентів',        url: '/studentu/vazhlyve/reitynh-studentiv/' },
+            { text: 'Академічна доброчесність', url: '/studentu/vazhlyve/akademichna-dobrochesnist/' },
+          ],
+        },
+      ],
+
+
+      applicantMenuItems:[
+        { text: 'Умови вступу', url: 'https://fmi.chnu.edu.ua/abituriientu/umovy-vstupu/' },
+        { text: 'Бакалаврат', url: 'https://fmi.chnu.edu.ua/abituriientu/bakalavrat/' },
+        { text: 'Магістратура', url: 'https://fmi.chnu.edu.ua/abituriientu/mahistratura/' },
+        { text: 'Аспірантура', url: 'https://fmi.chnu.edu.ua/abituriientu/vstup-do-aspirantury/' },
+        { text: 'День відкритих дверей', url: 'https://fmi.chnu.edu.ua/abituriientu/den-vidkrytykh-dverei/' },
+        { text: 'Курси підготовки до ЗНО', url: 'https://algebra.chnu.edu.ua/abituriientu/kursy-pidhotovky-do-zno-ta-nmt-z-matematyky/' },
+        { text: 'Аналіз вступної кампанії', url: 'https://fmi.chnu.edu.ua/abituriientu/analiz-vstupnoi-kampanii/vstup-2024/' },
+        { text: 'Гуртожиток', url: 'https://fmi.chnu.edu.ua/pro-nas/infrastruktura/hurtozhytok/' },
+      ],
+
+
+      aboutMenuItems: [
+        {
+          title: 'Адміністрація',
+          items: [
+            { text: 'Деканат', url: '/pro-nas/administratsiia/dekanat/' },
+            { text: 'Вчена рада', url: '/pro-nas/administratsiia/vchena-rada/' },
+            { text: 'Профбюро', url: '/pro-nas/administratsiia/profbiuro/' },
+            { text: 'Контакти', url: '/pro-nas/administratsiia/kontakty/' },
+          ],
+        },
+        {
+          title: 'Історія та сьогодення',
+          items: [
+            { text: 'Історія', url: 'https://fmi.chnu.edu.ua/' },
+            { text: 'Символіка', url: '/pro-nas/istoriia-ta-sohodennia/symvolika/' },
+            { text: 'Випускники', url: '/pro-nas/istoriia-ta-sohodennia/vypusknyky/' },
+            { text: 'Сторінка пам\'яті загиблих Героїв', url: '/pro-nas/istoriia-ta-sohodennia/storinka-pamiati-zahyblykh-heroiv/' },
+          ],
+        },
+        {
+          title: 'Інфраструктура',
+          items: [
+            { text: 'Лабораторії', url: '/pro-nas/infrastruktura/laboratorii/' },
+            { text: 'Студентський простір', url: '/pro-nas/infrastruktura/studentskyi-prostir/' },
+            { text: 'Кімната матері та дитини', url: '/pro-nas/infrastruktura/kimnata-materi-ta-dytyny/' },
+            { text: 'Інше', url: '/pro-nas/infrastruktura/' },
+          ],
+        },
+        {
+          title: 'При факультеті',
+          items: [
+            { text: 'Рада стейкхолдерів', url: '/pro-nas/pry-fakulteti/rada-steikkholderiv/' },
+            { text: 'Рада молодих вчених', url: '/pro-nas/pry-fakulteti/rada-molodykh-vchenykh/' },
+            { text: 'Асоціація випускників', url: '/pro-nas/pry-fakulteti/asotsiatsiia-vypusknykiv/' },
+          ],
+        },
+        {
+          title: 'Публічна інформація',
+          items: [
+            { text: 'Звіти', url: '/pro-nas/publichna-informatsiia/zvity/zvit-2024/' },
+            { text: 'Нормативна база', url: '/pro-nas/publichna-informatsiia/normatyvni-dokumenty/' },
+            { text: 'Результати моніторингу', url: '/pro-nas/publichna-informatsiia/rezultaty-monitorynhu/' },
+          ],
+        },
+        {
+          title: 'Корисне',
+          items: [
+            { text: 'Соціально-психологічний центр', url: 'https://www.chnu.edu.ua/universytet/pry-universyteti/sotsialno-psykholohichnyi-tsentr/' },
+            { text: 'Медіаційна служба', url: 'https://www.chnu.edu.ua/universytet/pry-universyteti/mediatsiina-sluzhba/' },
+            { text: 'Скринька зауважень та пропозицій', url: '/pro-nas/korysne/skrynka-zauvazhen-ta-propozytsii/' },
+          ],
+        },
+      ],
+    
       phoneNumber: '(0372) 58-48-80',
+
+      linkBannerBtnFirst: 'https://fmi.chnu.edu.ua/studentu/navchannia/rozklad-zaniat-ta-sesii/',
+      linkBannerBtnSecond: 'https://docs.google.com/forms/d/e/1FAIpQLScDrS07bnoVtAPClx85qfDFuwRUSpD7VXBNyc9QzajTQdVs-g/viewform',
 
     }
 
@@ -176,16 +292,17 @@ class HomePage {
       this.logolink.click();
     }
 
+
     mouseoverNewsMenu(){
       this.newsMenu.trigger('mouseover');
     }
 
-    mouseoverActivityMenu(){
-      this.activityMenu.trigger('mouseover');
+    clickActivityMenu(){
+      this.activityMenu.click();
     }
 
-    mouseoverStudentMenu(){
-      this.studentMenu.trigger('mouseover');
+    clickStudentMenu(){
+      this.studentMenu.click();
     }
 
     mouseoverApplicantMenu(){
@@ -196,14 +313,43 @@ class HomePage {
       this.departmentMenu.trigger('mouseover');
     }
 
-    mouseoverAboutUsMenu(){
-      this.aboutUsMenu.trigger('mouseover');
+    clickAboutUsMenu(){
+      this.aboutUsMenu.click();
     }
 
     clickMenuItem(itemText) {
       cy.contains(itemText)
         .invoke('removeAttr', 'target')
         .click({ force: true });
+    }
+
+    makeTheSubmenuVisble(query){
+      query
+      .invoke('css', 'visibility', 'visible')
+      .invoke('css', 'opacity', '1') 
+      .invoke('css', 'transition', 'none');
+    }
+
+    clickSubmenuSubItems(elementQuery, itemText) {
+      elementQuery 
+        .contains(itemText) 
+        .invoke('removeAttr', 'target') 
+        .click({ force: true }); 
+    }
+    
+    verifyCategoryContains(title) {
+      this.category
+        .contains(title)
+        .then(($el) => {
+          const parentMenu = $el.closest('.submenu.megamenu.megamenu-columns');
+          if (parentMenu.css('visibility') === 'hidden') {
+            cy.wrap(parentMenu)
+              .invoke('css', 'visibility', 'visible')
+              .invoke('css', 'opacity', '1')
+              .invoke('css', 'transition', 'none'); 
+          }
+          cy.wrap($el).should('be.visible');
+        });
     }
 
     verifyUrlContains(expectedUrl) {
@@ -214,8 +360,8 @@ class HomePage {
       this.subAboutUsMenu.contains(itemText).click({ force: true });
     }
 
-    clickBannerButton() {
-      this.bannerBtn.click();
+    clickBannerButton(element) {
+      element.click();
     }
 
     clickLinksInEventsAtIndex(index) {
@@ -244,7 +390,9 @@ class HomePage {
     }
 
     clickMarginbottom() {
-      this.marginbottom.click();
+      this.marginbottom
+      .invoke('removeAttr', 'target') 
+      .click();
     }
 
     clickLinksCHNU() {
@@ -260,7 +408,9 @@ class HomePage {
     }
 
     clickPrivacySettings() {
-      this.privacySettings.click();
+      this.privacySettings
+      .invoke('removeAttr', 'target') 
+      .click();
     }
 
     clickSplidPaginatioPagePartners() {

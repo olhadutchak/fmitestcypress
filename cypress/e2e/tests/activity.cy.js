@@ -232,131 +232,6 @@ describe('TESTING ACTIVITY PAGE', () => {
   });
 
 
-  context('TESTING EDUCATIONAL AND METHODICAL ACTIVITIES', () => {
-
-    beforeEach(() => {
-
-      cy.visit('https://fmi.chnu.edu.ua/diialnist/navchalno-metodychna/')
-
-    });
-
-
-    it('Validate the navigations element', () => {
-      activityPage.clicknaviElement();
-      cy.url().should('include', 'https://fmi.chnu.edu.ua/diialnist/').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
-
-
-    it('Validate "composition of the methodical board " element', () => {
-      activityPage.composition
-        .should('contain', 'Склад методичної ради')
-        .should('have.attr', 'href', '/media/cwznspzq/spysok-chleniv-metodrady__22-23.pdf')
-        .should('have.attr', 'target', '_blank')
-        .invoke('removeAttr', 'target');
-
-      activityPage.clickComposition();
-
-      cy.location('href', { timeout: 10000 }).should('include', '/media/cwznspzq/spysok-chleniv-metodrady__22-23.pdf').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
-
-
-    it('Validate "work plan" element', () => {
-      activityPage.workPlan
-        .should('contain', 'План роботи')
-        .should('have.attr', 'href', '/media/xizhqfxb/plan_metod-rada-fmi_23_24.pdf')
-        .invoke('removeAttr', 'target');
-      activityPage.clickWorkPlan();
-
-      cy.location('href', { timeout: 10000 }).should('include', '/media/xizhqfxb/plan_metod-rada-fmi_23_24.pdf').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
-
-
-    it('Validate "regulations" element', () => {
-      activityPage.regulations
-        .should('contain', 'Нормативні документи')
-        .should('have.attr', 'href', '/media/agqpgvmc/zbirnyk-normatyvnykh-dokumentiv-chnu_2021.pdf')
-        .invoke('removeAttr', 'target');
-      activityPage.clickRegulations();
-
-      cy.location('href', { timeout: 10000 }).should('include', 'https://fmi.chnu.edu.ua/media/agqpgvmc/zbirnyk-normatyvnykh-dokumentiv-chnu_2021.pdf').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
-
-
-    it('Validate link to first pdf file', () => {
-      activityPage.firstPDF
-        .should('exist')
-        .should('have.attr', 'href', '/media/hmqlqxkc/metodychni-rekomendatsii-2023-2024-nr.pdf')
-        .invoke('removeAttr', 'target');
-      activityPage.clickFirstPDF();
-
-      cy.location('href', { timeout: 10000 }).should('include', '/media/hmqlqxkc/metodychni-rekomendatsii-2023-2024-nr.pdf').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
-
-
-    it('Validate link to second pdf file', () => {
-      activityPage.secondPDF
-        .should('exist')
-        .should('have.attr', 'href', '/media/sg3a2x5q/metodychni_rekomendatsii_cherven_2023.pdf')
-        .invoke('removeAttr', 'target');
-
-      activityPage.clickSecondPDF();
-
-
-      cy.location('href', { timeout: 10000 }).should('include', '/media/sg3a2x5q/metodychni_rekomendatsii_cherven_2023.pdf').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
-
-
-    it('Validate link to third pdf file', () => {
-      activityPage.thirdPDF
-        .should('exist')
-        .should('have.attr', 'href', '/media/dmffkvvn/metodychni-porady-na-2022-2023-nr_chnu.pdf')
-        .invoke('removeAttr', 'target');
-
-      activityPage.clickThirdPDF();
-
-
-      cy.location('href', { timeout: 10000 }).should('include', '/media/dmffkvvn/metodychni-porady-na-2022-2023-nr_chnu.pdf').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
-
-
-  });
-
-
   context('TESTING INTERNATIONAL PAGE', () => {
 
     beforeEach(() => {
@@ -536,6 +411,132 @@ describe('TESTING ACTIVITY PAGE', () => {
 
 
   });
+  
+  context.only('EDUCATIONAL DIRECTION', () => {
+
+    context('TESTING EDUCATIONAL AND METHODICAL ACTIVITIES', () => {
+
+      beforeEach(() => {
+
+        cy.visit('https://fmi.chnu.edu.ua/diialnist/navchalno-metodychna/')
+
+      });
+
+
+      it('Validate the navigations element', () => {
+        activityPage.clicknaviElement();
+        cy.url().should('include', 'https://fmi.chnu.edu.ua/diialnist/').then((url) => {
+
+          cy.request(url).its('status').should('eq', 200);
+
+        });
+
+      });
+
+
+      it('Validate "composition of the methodical board " element', () => {
+        activityPage.composition
+          .should('contain', 'Склад методичної ради')
+          .should('have.attr', 'href', '/media/cwznspzq/spysok-chleniv-metodrady__22-23.pdf')
+          .should('have.attr', 'target', '_blank')
+          .invoke('removeAttr', 'target');
+
+        activityPage.clickComposition();
+
+        cy.location('href', { timeout: 10000 }).should('include', '/media/cwznspzq/spysok-chleniv-metodrady__22-23.pdf').then((url) => {
+
+          cy.request(url).its('status').should('eq', 200);
+
+        });
+
+      });
+
+
+      it('Validate "work plan" element', () => {
+        activityPage.workPlan
+          .should('contain', 'План роботи')
+          .should('have.attr', 'href', '/media/rbpf0ulf/plan_metod-rada-fmi_24_25.pdf')
+          .invoke('removeAttr', 'target');
+        activityPage.clickWorkPlan();
+
+        cy.location('href', { timeout: 10000 }).should('include', '/media/rbpf0ulf/plan_metod-rada-fmi_24_25.pdf').then((url) => {
+
+          cy.request(url).its('status').should('eq', 200);
+
+        });
+
+      });
+
+
+      it('Validate "regulations" element', () => {
+        activityPage.regulations
+          .should('contain', 'Нормативні документи')
+          .should('have.attr', 'href', '/media/agqpgvmc/zbirnyk-normatyvnykh-dokumentiv-chnu_2021.pdf')
+          .invoke('removeAttr', 'target');
+        activityPage.clickRegulations();
+
+        cy.location('href', { timeout: 10000 }).should('include', 'https://fmi.chnu.edu.ua/media/agqpgvmc/zbirnyk-normatyvnykh-dokumentiv-chnu_2021.pdf').then((url) => {
+
+          cy.request(url).its('status').should('eq', 200);
+
+        });
+
+      });
+
+
+      it('Validate link to first pdf file', () => {
+        activityPage.firstPDF
+          .should('exist')
+          .should('have.attr', 'href', '/media/hmqlqxkc/metodychni-rekomendatsii-2023-2024-nr.pdf')
+          .invoke('removeAttr', 'target');
+        activityPage.clickFirstPDF();
+
+        cy.location('href', { timeout: 10000 }).should('include', '/media/hmqlqxkc/metodychni-rekomendatsii-2023-2024-nr.pdf').then((url) => {
+
+          cy.request(url).its('status').should('eq', 200);
+  
+        });
+
+      });
+
+ 
+      it('Validate link to second pdf file', () => {
+        activityPage.secondPDF
+          .should('exist')
+          .should('have.attr', 'href', '/media/sg3a2x5q/metodychni_rekomendatsii_cherven_2023.pdf')
+          .invoke('removeAttr', 'target');
+
+        activityPage.clickSecondPDF();
+
+
+        cy.location('href', { timeout: 10000 }).should('include', '/media/sg3a2x5q/metodychni_rekomendatsii_cherven_2023.pdf').then((url) => {
+
+          cy.request(url).its('status').should('eq', 200);
+
+        });
+
+      });
+
+
+      it('Validate link to third pdf file', () => {
+        activityPage.thirdPDF
+          .should('exist')
+          .should('have.attr', 'href', '/media/dmffkvvn/metodychni-porady-na-2022-2023-nr_chnu.pdf')
+          .invoke('removeAttr', 'target');
+
+        activityPage.clickThirdPDF();
+
+
+        cy.location('href', { timeout: 10000 }).should('include', '/media/dmffkvvn/metodychni-porady-na-2022-2023-nr_chnu.pdf').then((url) => {
+
+          cy.request(url).its('status').should('eq', 200);
+
+        });
+
+      });
+
+
+    });
 
 
   context('TESTING ORGANIZATIONAL AND EDUCATIONAL PAGE', () => {
@@ -571,20 +572,7 @@ describe('TESTING ACTIVITY PAGE', () => {
     });
 
 
-    it('Validate element "educational activities"', () => {
-      activityPage.educational
-        .should('be.visible')
-        .should('contain', 'Виховні  заходи');
-
-      activityPage.clickEducational();
-
-      cy.url().should('include', 'https://fmi.chnu.edu.ua/diialnist/orhanizatsiino-vykhovna/vykhovni-zakhody/').then((url) => {
-
-        cy.request(url).its('status').should('eq', 200);
-
-      });
-
-    });
+    
 
 
     it('Validate element "board of curators"', () => {
@@ -621,24 +609,19 @@ describe('TESTING ACTIVITY PAGE', () => {
 
     context('TESTING EDUCATIONAL ACTIVITIES ELEMENT IN RGANIZATIONAL AND EDUCATIONAL PAGE', () => {
 
-      beforeEach(() => {
+      it('Validate element "educational activities"', () => {
+        activityPage.educational
+          .should('be.visible')
+          .should('contain', 'Виховні  заходи');
+  
         activityPage.clickEducational();
-      });
-
-
-      it('Validate links to pdf files', () => {
-        activityPage.pdfdoclink.each(($link) => {
-          const url = $link.attr('href');
-          cy.wrap($link).should('exist').and('have.attr', 'target', '_blank');
-
-          cy.request(url).then((response) => {
-
-            cy.wrap(response.headers['content-type']).should('include', 'application/pdf');
-
-          });
-
+  
+        cy.url().should('include', '/media/spxogpw3/plan-zakhodiv-24-25.pdf').then((url) => {
+  
+          cy.request(url).its('status').should('eq', 200);
+  
         });
-
+  
       });
 
     });
@@ -668,6 +651,7 @@ describe('TESTING ACTIVITY PAGE', () => {
 
 
   });
+});
 
 
   context('TESTING REGULATIONS PAGE', () => {

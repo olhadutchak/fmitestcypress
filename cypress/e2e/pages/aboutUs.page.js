@@ -1,7 +1,7 @@
 class AboutUsPage {
 
     get aboutthefaculty()             { return cy.get('.flex-item a.category-item-flex:contains("Про факультет")'); }
-    get deanery()                     { return cy.get('.flex-item a.category-item-flex:contains("Деканат")'); }
+    get deanery()                     { return cy.get('.submenu-inner:contains("Деканат")'); }
     get academicCouncil()             { return cy.get('.flex-item a.category-item-flex:contains("Вчена рада")'); }
     get councilOfStakeholders()       { return cy.get('.flex-item a.category-item-flex:contains("Рада стейкхолдерів")'); }
     get professionalBureau()          { return cy.get('.flex-item a.category-item-flex:contains("Профбюро")'); }
@@ -22,7 +22,8 @@ class AboutUsPage {
     get teamMemberimg()         { return cy.get('.team-member').find('img'); }
     get teamMemberEmail()       { return cy.get('.team-member').find('.flex-personal-info li:contains("@") a.black-link'); }
     get teamMemberPhone()       { return cy.get('.team-member').find('.flex-personal-info li:contains("0") a.black-link'); }
-
+    get teamMemberSocial()      { return cy.get(':nth-child(1) > .team-member > div.flex-personal-info');}
+    
     get cardLink()              { return cy.get('.card-link'); }
     get readMore()              { return cy.get('.flex-readon-arrow'); }
     get card()                  { return cy.get('.card'); }
@@ -68,47 +69,74 @@ class AboutUsPage {
     get rulesProcedure()        { return cy.get('.flex-item a.category-item-flex:contains("Правила внутрішнього розпорядку")'); }
     get dodatok()               { return cy.get('.flex-item a.category-item-flex:contains("Зразок заяви на поселення в гуртожиток")'); }
 
+   
     constants = {
-
         members: [
             {
                 name: 'Мартинюк Ольга Василівна',
                 email: 'o.martynyuk@chnu.edu.ua',
-                phone: '+380372584880'
+                phone: '+380372584880',
+                networks: {
+                    facebook: 'https://www.facebook.com/profile.php?id=100006827856522',
+                }
             },
             {
                 name: 'Кушнірчук Василь Йосипович',
                 email: 'v.kushnirchuk@chnu.edu.ua',
-                phone: '0372584880'
+                phone: '0372584880',
+                networks: {
+                    
+                }
             },
             {
                 name: 'Карлова Олена Олексіївна',
                 email: 'o.karlova@chnu.edu.ua',
-                phone: '(0372) 58-48-88'
+                phone: '+380372584888',
+                networks: {
+                    schoolsite: 'http://schoolsite.org.ua/4/',
+                    facebook: 'https://www.facebook.com/olena.karlova'
+                }
             },
             {
                 name: 'Сікора Віра Степанівна',
                 email: 'v.sikora@chnu.edu.ua',
-                phone: '(0372) 58-48-70'
+                phone: '+380372584870'
             },
             {
                 name: 'Юрійчук Анастасія Олександрівна',
                 email: 'a.yuriychuk@chnu.edu.ua',
-                phone: '+38 (0372) 58-48-57'
+                phone: '+380372584857'
             },
             {
                 name: 'Довжицька Ірина Михайлівна',
                 email: 'i.dovzhytska@chnu.edu.ua',
-                phone: '(0372) 58-48-80'
+                phone: '+380372584880'
             },
             {
                 name: 'Скоролітня Аліна Іванівна',
                 email: 'a.skorolitnia@chnu.edu.ua',
-                phone: '(0372) 58-48-80'
+                phone: '+380372584880'
+            },
+            {
+                name: 'Гриценко Андрій Володимирович',
+                email: 'a.grytsenko@chnu.edu.ua',
+                phone: '+380372584890',
+                networks: {
+                    linkedin: 'https://linkedin.com/in/a-grytsenko',
+                    google_scholar: 'https://scholar.google.com/citations?user=grytsenko'
+                }
+            },
+            {
+                name: 'Мельник Тетяна Сергіївна',
+                email: 't.melnyk@chnu.edu.ua',
+                phone: '+380372584899',
+                networks: {
+                    facebook: 'https://facebook.com/t.melnyk',
+                    researchgate: 'https://www.researchgate.net/profile/T-Melnyk'
+                }
             }
-        ],
-
-    }
+        ]
+    };
 
     clickCampus(){
         this.campus.click();

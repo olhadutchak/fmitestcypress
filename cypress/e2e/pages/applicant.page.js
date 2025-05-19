@@ -9,6 +9,11 @@ class Applicant {
     get computerScience()      { return cy.get('h4 a').contains('Освітня програма: «Інформаційні технології та управління проектами»'); }
     get systemAnalysis()       { return cy.get('h4 a').contains('Освітня програма: «Системний аналіз»'); }
     get pdfFiles()             { return cy.get('.file a.link:not(:last)'); }
+    get pdf()                  { return cy.get('a[href$=".pdf"]');}
+    
+    get allResourceLinks()     { return cy.get('a[href^="https://"][target="_blank"]');}
+    get dormitoryLinks()       { return cy.get('.flex-container .category-item-flex');}
+    
 
     get roadMap()              { return cy.get('.category-item-flex').eq(0); }
     get electronicCabinet()    { return cy.get('.category-item-flex').eq(1); }
@@ -26,12 +31,41 @@ class Applicant {
 
     get internalSpace()        { return cy.get('.internal-space.text-block-area a'); }
 
+    constants = {
+        elementsToValidate: [
+            {
+              title: 'Студмістечко',
+              hrefContains: 'studmistechko',
+            },
+            {
+              title: 'Гуртожиток №4 (відео)',
+              hrefContains: '.mp4',
+            },
+            {
+              title: 'Положення про користування гуртожитками',
+              hrefContains: 'polozhennia-pro-korystuvannia',
+            },
+            {
+              title: 'Правила внутрішнього розпорядку',
+              hrefContains: 'pravyla-vnutrishnoho-rozporiadku',
+            },
+            {
+              title: 'Зразок заяви на поселення в гуртожиток',
+              hrefContains: 'https://www.chnu.edu.ua/universytet/zahalni-vidomosti/strukturni-pidrozdily/studmistechko/normatyvni-dokumenty/',
+            },
+            {
+              title: 'Алгоритм поселення здобувачів освіти у гуртожитки студмістечка',
+              hrefContains: 'alhorytm-poselennia',
+            }
+        ],
+    }
+
     clickEducationMathematics() {
         this.educationMathematics.click();
     }
     
     clickEducationInformatics() {
-        this.educationInformatics.click();
+        this.educationInformatics.invoke('removeAttr', 'target').click();
     }
     
     clickMathematics() {
@@ -77,6 +111,8 @@ class Applicant {
     clickChatForApplicants() {
         this.chatForApplicants.click();
     }
+
+    
 }
 
 export default new Applicant();
