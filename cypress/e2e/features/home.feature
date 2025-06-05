@@ -83,7 +83,7 @@ Feature: TESTING THE HOME PAGE
     Examples:
       | button          | expectedLink        |
       | bannerBtnFirst  | linkBannerBtnFirst  |
-      | bannerBtnSecond | linkBannerBtnSecond |
+
 
   Scenario: VALIDATE LINKS IN LATEST EVENTS
     When I check all links in the latest events section
@@ -127,9 +127,9 @@ Feature: TESTING THE HOME PAGE
     And the page should return a successful status for "<expectedHref>"
 
     Examples:
-      | element        | expectedHref                  |
-      | partnersFirst  | http://quaere.fmi.org.ua/#   |
-      | partnersSecond | http://tempus.chnu.edu.ua/   |
+      | element         | expectedHref                  |
+      | partnearsFirst  | http://quaere.fmi.org.ua/#   |
+      | partnearsSecond | http://tempus.chnu.edu.ua/   |
 
   Scenario: VALIDATE VISIBILITY OF SCROLLUP BUTTON AFTER SCROLLING DOWN
     When I scroll to the bottom of the page

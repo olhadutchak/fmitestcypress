@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress");
 const { verifyDownloadTasks } = require("cy-verify-downloads");
 const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
 const webpack = require("@cypress/webpack-preprocessor");
+const fs = require('fs');
 const path = require("path");
 
 module.exports = defineConfig({
@@ -18,7 +19,9 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.{feature,cy.js}",
     supportFile: "cypress/support/e2e.js", 
     async setupNodeEvents(on, config) {
-      
+      const fixturePath = path.join(__dirname, 'cypress', 'fixtures', 'dekanat.json');
+      const data = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
+      config.env.fixture = data; 
       await addCucumberPreprocessorPlugin(on, config);
       const options = {
         webpackOptions: {

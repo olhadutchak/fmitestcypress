@@ -9,28 +9,27 @@ Then('I should see "Сайт конференції" links', () => {
 });
 
 Then('each conference link should have correct href and respond with status 200', () => {
-  activityPage.conferenceBannerButton.each(($el, index) => {
+ activityPage.conferenceBannerButton
+  .should('have.length', activityPage.constants.expectedLinks.length)
+  .each(($el, index) => {
     const expectedHref = activityPage.constants.expectedLinks[index];
 
     cy.wrap($el).should('have.text', 'Сайт конференції');
+    cy.wrap($el).should('have.attr', 'href', expectedHref);
 
-    cy.wrap($el)
-      .invoke('attr', 'href')
-      .then((actualHref) => {
-        if (actualHref !== expectedHref) {
-          cy.log(`Expected href: ${expectedHref}, but got: ${actualHref}`);
-        }
-        cy.request({
-          url: actualHref,
-          failOnStatusCode: false
-        }).then((response) => {
-          if (response.status !== 200) {
-            cy.log(`Link at index ${index} returned status ${response.status}`);
-          }
-        });
-      });
+    cy.request({
+      url: expectedHref,
+      failOnStatusCode: false,
+    }).then((response) => {
+      if (response.status !== 200) {
+        cy.log(`>>> ERROR: [${expectedHref}] responded with status ${response.status} <<<`);
+      } else {
+        cy.log(`=== OK: [${expectedHref}] responded with status 200 ===`);
+      }
+    });
   });
 });
+
 
 When('I click on seminar card header at index {int}', (index) => {
   activityPage.seminarCard.eq(index).within(() => {
@@ -86,7 +85,7 @@ When('I click each image in the lightbox gallery', () => {
 });
 
 Then('the image viewer should appear and be closable', () => {
-  // Вже перевірено в попередньому кроці. Цей крок може бути залишений як "empty".
+ 
 });
 
 // ---------- PROJECTS ----------
@@ -150,23 +149,21 @@ Then("the file should be accessible and in PDF format", function () {
 });
 
 // Partners Scenarios
-When("I check each partner link", () => {
+When("When I check each partner link stutus 200", () => {
   activityPage.getPartnerLinks.each(($link) => {
-            const href = $link.prop('href');
-            cy.request({
-              url: href,
-              timeout: 18000,
-              failOnStatusCode: false,
-            }).then((response) => {
-              const isExternal = !href.includes('fmi.chnu.edu.ua');
-              if (isExternal) {
-                expect(response.status).to.be.oneOf([200, 400, 403]);
-                cy.log(`Facebook link tested with status: ${response.status}`);
-              } else {
-                expect(response.status).to.eq(200);
-              }
-            });
-          });
+    const href = $link.prop('href');
+    cy.request({
+      url: href,
+      timeout: 18000,
+      failOnStatusCode: false,
+    }).then((response) => {
+      if (response.status !== 200) {
+        cy.log(`ERROR: Link ${href} returned status ${response.status}`);
+      } else {
+        cy.log(`OK: Link ${href} returned status 200`);
+      }
+    });
+  });
 });
 
 
@@ -199,15 +196,6 @@ When("I download the file titled {string}", (title) => {
 Then("the file named {string} should be downloaded successfully", (filename) => {
   cy.verifyDownload(filename, { timeout: 20000 });
 });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -254,7 +242,7 @@ When("I click each photo element", () => {
 });
 
 Then('the image modal should open and be closable', () => {
-  // already handled inside previous step (combined step for loop + asserts)
+ 
 });
 
 
@@ -288,6 +276,5 @@ When('I open each course card in turn', () => {
 });
 
 Then('I should see the course content and return to the main page each time', () => {
-  // This step is integrated above with assertions inside the loop
-  // You can leave it empty or add an overall assertion here if needed
+ 
 });

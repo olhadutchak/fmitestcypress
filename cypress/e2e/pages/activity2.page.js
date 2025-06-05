@@ -40,6 +40,8 @@ class ActivityPage {
     
 
     constants = {
+        totalCards: 5,
+
         expectedLinks: [
             "https://hahn.chnu.edu.ua/",
             "https://fmi55.chnu.edu.ua/",

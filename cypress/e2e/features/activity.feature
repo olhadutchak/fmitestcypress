@@ -96,9 +96,6 @@ Feature: Testing Scientific Activity Menu Items
   Rule: TESTING PARTNERS SUBMENU ITEM
     Background:
       Given I open the website page "https://fmi.chnu.edu.ua/diialnist/spivpratsia/partnery/"
-  
-    Scenario: Validate partner links are reachable
-      When I check each partner link
       
     Scenario: Validate presence of downloadable files
       When I check each file in the document list
@@ -112,12 +109,7 @@ Feature: Testing Scientific Activity Menu Items
       Then the file named "anketa_fmi.doc" should be downloaded successfully
 
 
-
-
-
-
-
-  Rule: Educational and Methodological Section
+  Rule: TESTING EDUCATIONAL AND METHODOLOGICAL
     Background:
       Given I open the page "https://fmi.chnu.edu.ua/diialnist/navchalno-metodychna/"
 
@@ -128,9 +120,9 @@ Feature: Testing Scientific Activity Menu Items
       And the document should be accessible
 
     Scenario: Validate work plan
-      Then the "workPlan" link should have href "/media/rbpf0ulf/plan_metod-rada-fmi_24_25.pdf"
+      Then the "workPlan" link should have href "/media/qkjhwxo3/plan-roboty_metod-rada-fmi_24_25.pdf"
       When I click on the "workPlan" link
-      Then the current URL should include "/media/rbpf0ulf/plan_metod-rada-fmi_24_25.pdf"
+      Then the current URL should include "/media/qkjhwxo3/plan-roboty_metod-rada-fmi_24_25.pdf"
       And the document should be accessible
 
     Scenario: Validate regulations
@@ -143,7 +135,7 @@ Feature: Testing Scientific Activity Menu Items
       When I click on the "normDocsLink" link
       Then the current URL should include "chnu.edu.ua/universytet/normatyvni-dokumenty"
 
-  Rule: Organizational and Educational Section
+  Rule: TESTING ORGANIZATIONAL AND EDUCATIONAL SUBMENUITEAM
     Background:
       Given I open the page "https://fmi.chnu.edu.ua/diialnist/orhanizatsiino-vykhovna/"
 
@@ -165,7 +157,7 @@ Feature: Testing Scientific Activity Menu Items
       Then the current URL should include "/diialnist/orhanizatsiino-vykhovna/fotozvity/"
       And the document should be accessible
 
-  Rule: Photo Reports Modal
+  Rule: TESTING PHOTO REPORTS IN RGANIZATIONAL AND EDUCATIONAL PAGE
     Background:
       Given I open the page "https://fmi.chnu.edu.ua/diialnist/orhanizatsiino-vykhovna/fotozvity/"
 

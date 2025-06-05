@@ -15,13 +15,13 @@ constants = {
   teachers: "https://fmi.chnu.edu.ua/novyny/vykladacham/",
   greeting: "https://fmi.chnu.edu.ua/novyny/vitannia/",
 
-  totalPagesConst: 29,
-  generalTotalPagesConst: 13,
-  advertisementTotalPagesConst: 10,
+  totalPagesConst: 44,
+  generalTotalPagesConst: 20,
+  advertisementTotalPagesConst: 14,
   eventsTotalPagesConst: 2,
-  studentsTotalPagesConst: 2,
+  studentsTotalPagesConst: 5,
   teachersTotalPagesConst: 0,
-  greetingTotalPagesConst: 3,
+  greetingTotalPagesConst: 4,
   
 }
 }

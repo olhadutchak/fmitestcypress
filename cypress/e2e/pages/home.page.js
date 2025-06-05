@@ -29,7 +29,7 @@ class HomePage {
 
       get linksCHNU()                        { return cy.get('.footer-normal .links li:contains("Чернівецький національний університет імені Юрія Федьковича") a'); }
       get linksMoodle()                      { return cy.get('.footer-normal .links li:contains("Електронне навчання - Moodle") a'); }
-      get linksAdmission()                   { return cy.get('.footer-normal .links li:contains("Вступ 2024") a'); }
+      get linksAdmission()                   { return cy.get('.footer-normal .links li:contains("Вступ 2025") a'); }
       get contactsPhoneNumber()              { return cy.get('.footer-normal li:contains("(0372) 58-48-80") a'); }
       get privacySettings()                  { return cy.get('.footer-normal li:contains("Налаштування конфіденційності") a'); }
       get marginbottom()                     { return cy.get('.margin-bottom a'); }
@@ -40,8 +40,7 @@ class HomePage {
       get mail3()                            { return cy.get('a[href="mailto:mykola.gorbatenko@gmail.com"]'); }
 
       get searchbtn()                        { return cy.get('.search-button'); }
-      get bannerBtnFirst()                        { return cy.get('.banner-button').eq(0); }
-      get bannerBtnSecond()                        { return cy.get('.banner-button').eq(1); }
+      get bannerBtnFirst()                   { return cy.get('.banner-button').eq(0); }
       get prevButton()                       { return cy.get('#splide02 .splide__arrows  .splide__arrow--prev'); }
       get nextButton()                       { return cy.get('#splide02  .splide__arrows  .splide__arrow--next'); }
       get scrollBtn()                        { return cy.get('#scrollUp'); }
@@ -258,8 +257,8 @@ class HomePage {
     
       phoneNumber: '(0372) 58-48-80',
 
-      linkBannerBtnFirst: 'https://fmi.chnu.edu.ua/studentu/navchannia/rozklad-zaniat-ta-sesii/',
-      linkBannerBtnSecond: 'https://docs.google.com/forms/d/e/1FAIpQLScDrS07bnoVtAPClx85qfDFuwRUSpD7VXBNyc9QzajTQdVs-g/viewform',
+      linkBannerBtnFirst: 'https://docs.google.com/forms/d/e/1FAIpQLScDrS07bnoVtAPClx85qfDFuwRUSpD7VXBNyc9QzajTQdVs-g/viewform',
+    
 
     }
 

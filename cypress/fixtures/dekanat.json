@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Мартинюк Ольга Василівна",
+    "position": "Декан факультету математики та інформатики",
+    "degree": "Доктор фізико-математичних наук, професор кафедри алгебри та інформатики",
+    "email": "o.martynyuk@chnu.edu.ua",
+    "phone": "+380372584880",
+    "profile": "https://algebra.chnu.edu.ua/pro-kafedru/spivrobitnyky/martyniuk-olha-vasylivna/",
+    "social": ["https://www.facebook.com/profile.php?id=100006827856522"]
+  },
+  {
+    "name": "Кушнірчук Василь Йосипович",
+    "position": "Заступник декана з навчально-виховної роботи",
+    "degree": "Кандидат фізико-математичних наук, доцент кафедри математичного моделювання",
+    "email": "v.kushnirchuk@chnu.edu.ua",
+    "phone": "0372584880",
+    "profile": "https://mathmod.chnu.edu.ua/pro-nas/spivrobitnyky/kushnirchuk-vasyl-yosypovych/"
+  },
+  {
+    "name": "Карлова Олена Олексіївна",
+    "position": "Заступник декана з наукової роботи та міжнародних зв’язків",
+    "degree": "Доктор фізико-математичних наук, професор кафедри математичного аналізу",
+    "email": "o.karlova@chnu.edu.ua",
+    "phone": "(0372) 58-48-88",
+    "profile": "https://math-analysis.chnu.edu.ua/pro-kafedru/spivrobitnyky/karlova-olena-oleksiivna/",
+    "social": [
+      "http://schoolsite.org.ua/4/",
+      "https://www.facebook.com/olena.karlova",
+      "https://www.facebook.com/MiniMudryk"
+    ]
+  },
+  {
+    "name": "Сікора Віра Степанівна",
+    "position": "Заступник декана з навчально-методичної роботи",
+    "degree": "Кандидат фізико-математичних наук, доцент кафедри алгебри та інформатики",
+    "email": "v.sikora@chnu.edu.ua",
+    "phone": "(0372) 58-48-70",
+    "profile": "https://algebra.chnu.edu.ua/pro-kafedru/spivrobitnyky/sikora-vira-stepanivna/"
+  },
+  {
+    "name": "Нестеренко Василь Володимирович",
+    "position": "Заступник декана з проєктної та міжнародної діяльності",
+    "degree": "Доктор фізико-математичних наук, доцент кафедри математичного аналізу",
+    "email": "v.nesterenko@chnu.edu.ua",
+    "phone": "(0372)584888",
+    "profile": "https://math-analysis.chnu.edu.ua/pro-kafedru/spivrobitnyky/nesterenko-vasyl-volodymyrovych/"
+  },
+  {
+    "name": "Юрійчук Анастасія Олександрівна",
+    "position": "Заступниця деканки з інформаційних та медіа-технологій",
+    "degree": "Асистентка кафедри прикладної математики та інформаційних технологій",
+    "email": "a.yuriychuk@chnu.edu.ua",
+    "phone": "+38 (0372) 58-48-57",
+    "profile": "https://amit.chnu.edu.ua/pro-kafedru/personalii/yuriichuk-anastasiia-oleksandrivna/"
+  },
+  {
+    "name": "Довжицька Ірина Михайлівна",
+    "position": "Секретар деканату",
+    "degree": "Кандидат фізико-математичних наук",
+    "email": "i.dovzhytska@chnu.edu.ua",
+    "phone": "(0372) 58-48-80"
+  },
+  {
+    "name": "Скоролітня Аліна Іванівна",
+    "position": "Секретар деканату",
+    "email": "a.skorolitnia@chnu.edu.ua"
+  }
+]
