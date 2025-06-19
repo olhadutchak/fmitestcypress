@@ -2,12 +2,14 @@ class Applicant {
 
     get linksToView()          { return cy.get('.readon-arrow:contains("Переглянути")'); }
 
-    get educationMathematics() { return cy.get('h4  a').contains('Освітня програма: «Математика та інформатика»'); }
-    get educationInformatics() { return cy.get('h4  a').contains('Освітня програма: «Інформатика та математика»'); }
+    get educationMathematics() { return cy.get('h4  a').contains('Освітня програма: «Середня освіта( Математика та інформатика)»'); }
+    get educationInformatics() { return cy.get('h4  a').contains('Освітня програма: «Середня освіта (Інформатика та цифрові технології в освіті)»'); }
     get mathematics()          { return cy.get('h4 a').contains('Освітня програма: «Математика»'); }
     get appliedMathematics()   { return cy.get('h4 a').contains('Освітня програма: «Технології програмування та комп’ютерне моделювання»'); }
-    get computerScience()      { return cy.get('h4 a').contains('Освітня програма: «Інформаційні технології та управління проектами»'); }
+    get computerScience()      { return cy.get('h4 a').contains('Освітня програма: «Комп’ютерні науки та проєктування програмних систем»'); }
     get systemAnalysis()       { return cy.get('h4 a').contains('Освітня програма: «Системний аналіз»'); }
+    get educationInformaticsS(){ return cy.get('h4 a').contains('Освітня програма: «Середня освіта (Інформатика та математика)»');}
+    get educationMathematicsS(){ return cy.get('h4  a').contains('Освітня програма: «Середня освіта (Математика та інформатика)»'); }
     get pdfFiles()             { return cy.get('.file a.link:not(:last)'); }
     get pdf()                  { return cy.get('a[href$=".pdf"]');}
     

@@ -38,8 +38,8 @@ Rule: TESTING BACHELOR
     And the status code 200 for the page should be "<url>"
   Examples:
     | element                       | url                                                                                           | discript |
-    | educationMathematics          | https://algebra.chnu.edu.ua/studentu/osvitni-prohramy-ta-robochi-plany/                       | 014.04 "secondary education (mathematics)"|
-    | educationInformatics          | difeq.chnu.edu.ua/abituriientu/osvitni-prohramy                                               | 014.09 "secondary education (informatics)"|
+    | educationMathematicsS          | https://algebra.chnu.edu.ua/studentu/osvitni-prohramy-ta-robochi-plany/                       | 014.04 "secondary education (mathematics)"|
+    | educationInformaticsS          | difeq.chnu.edu.ua/abituriientu/osvitni-prohramy                                               | 014.09 "secondary education (informatics)"|
     | mathematics                   | https://math-analysis.chnu.edu.ua/                                                            | 111 "mathematics" |
     | appliedMathematics            | https://amit.chnu.edu.ua/navchannia/osvitni-prohramy/                                         | 113 "applied mathematics"|
     | computerScience               | https://mathmod.chnu.edu.ua/media/1721/op_knbak_2021.pdf                                      | 122 "computer science"|

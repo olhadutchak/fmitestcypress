@@ -10,7 +10,7 @@ describe('TESTING NEWS PAGE', () => {
 
     const totalPages = newsPage.constants.totalPagesConst;
 
-    it.only('Validates all read next links on multiple pages on news all page', () => {
+    it('Validates all read next links on multiple pages on news all page', () => {
       cy.wrap(Array.from({ length: totalPages }, (_, i) => i + 1)).each((pageNumber) => {
         newsPage.preNewsSection.contains(String(pageNumber)).click();
         newsPage.newsSection.each(($link) => {
@@ -140,7 +140,7 @@ describe('TESTING NEWS PAGE', () => {
   });
   
 
-  context.only('TESTING TO THE TEACHERS SECTION', () => {
+  context('TESTING TO THE TEACHERS SECTION', () => {
     
     beforeEach(() => {
       cy.visit(newsPage.constants.teachers);
